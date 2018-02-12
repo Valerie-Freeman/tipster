@@ -1,0 +1,65 @@
+<h1>{{message}}</h1>
+<h2>This is where the user can search for shifts and add tips</h2>
+
+<div id="date-input">
+  <div class="input-group date">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="startDate">Start Date</span>
+    </div>
+    <input type="date" class="form-control" aria-describedby="startDate" ng-model="startDate">
+  </div>
+  <div class="input-group date">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="endDate">End Date</span>
+    </div>
+    <input type="date" class="form-control" aria-describedby="endDate" ng-model="endDate">
+  </div>
+  <button id="shifts-btn" type="button" class="btn btn-outline-secondary" ng-click="listShifts()">Get shifts</button>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Day</th>
+        <th scope="col">Time</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="shift in shifts">
+        <th scope="row">{{shift.date}}</th>
+        <td>{{shift.day}}</td>
+        <td>{{shift.time}}</td>
+        <td><button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addTipModal" ng-click="populateModal(shift)">Add Tip Amount</button></td>
+        
+        <!-- Modal for Add Tip button; Must be in ng-repeat to get shift info -->
+        <div class="modal" id="addTipModal" tabindex="-1" role="dialog" aria-labelledby="addTipModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tip-modal">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{shift.date}}, {{shift.day}}, {{shift.time}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body tip-modal-body">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                      </div>
+                      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="shift.amount">
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="saveTip()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </tr>
+    </tbody>
+  </table>
