@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Tipster", ["ngRoute"])
+angular.module("Tipster", ["ngRoute", "chart.js"])
   .constant("FBUrl", "https://tipsterdata.firebaseio.com/")
   .config(($routeProvider) => {
     $routeProvider
@@ -11,17 +11,13 @@ angular.module("Tipster", ["ngRoute"])
       templateUrl: "partials/dashboard.html",
       controller: "DashboardCtrl"
     })
-    .when("/addtips", {
-      templateUrl: "partials/addTips.html",
-      controller: "AddTipsCtrl"
+    .when("/shifts", {
+      templateUrl: "partials/shifts.html",
+      controller: "ShiftsCtrl"
     })
-    .when("/averages", {
-      templateUrl: "partials/averages.html",
-      controller: "AveragesCtrl"
-    })
-    .when("/totals", {
-      templateUrl: "partials/totals.html",
-      controller: "TotalsCtrl"
+    .when("/stats", {
+      templateUrl: "partials/stats.html",
+      controller: "StatsCtrl"
     })
     .otherwise("/", {
       templateUrl: "partials/demo.html"

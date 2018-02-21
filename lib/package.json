@@ -15,8 +15,10 @@
   "dependencies": {
     "angular": "^1.6.5",
     "angular-route": "^1.6.5",
+    "angular-chart.js": "^1.1.1",
     "bootstrap": "^3.3.7",
     "bulma": "^0.6.2",
+    "chart.js": "^2.7.1",
     "firebase": "^4.1.5",
     "jquery": "^3.2.1"
   }

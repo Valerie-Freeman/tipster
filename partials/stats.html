@@ -1,0 +1,18 @@
+<!-- <h1>{{message}}</h1> -->
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" ng-class="averagesTab" ng-click="getAverages()">Averages</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" ng-class="overviewTab" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Year Overview</a>
+    <div class="dropdown-menu" aria-labelledby="year-overview">
+      <a ng-repeat="year in years" ng-click="getYearOverview(year)" class="dropdown-item">{{year}}</a>
+    </div>
+  </li>
+</ul>
+<div>
+  <canvas id="bar" class="chart chart-bar"
+    chart-data="data" chart-labels="labels"> chart-series="series"
+  </canvas>
+</div>

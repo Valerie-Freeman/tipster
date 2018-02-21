@@ -3,8 +3,8 @@
 angular.module("Tipster").controller("NavCtrl", function($scope, AuthFactory, $location) {
   
   $scope.account = {
-    email: "inigo@dayrep.com",
-    password: "capstone",
+    email: "",
+    password: "",
     snsPlatform: null,
     snsToken: null
   };
