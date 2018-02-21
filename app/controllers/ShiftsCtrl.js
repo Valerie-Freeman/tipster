@@ -27,6 +27,7 @@ angular.module("Tipster").controller("ShiftsCtrl", function($scope, AuthFactory,
           tips.forEach(tip => {
             if(shift.shiftId === tip[1].shiftId) {
               shift.tip = `$${tip[1].amount}.00`;
+              shift.amount = tip[1].amount;
               shift.fbId = tip[0];
             }
           });
@@ -40,7 +41,7 @@ angular.module("Tipster").controller("ShiftsCtrl", function($scope, AuthFactory,
 
   // Displays "clicked shift" information in modal after clicking the "Add tip amount" or "Edit tip amount button"
   $scope.populateModal = (clickedShift) => {
-    $scope.shift = clickedShift;    
+    $scope.shift = clickedShift;  
   };
   
   // Grabs shift information and tip amount entered by user and writes a tip object to send to Firebase. Calls TipFactory.postTip to post the tip object to Firebase
