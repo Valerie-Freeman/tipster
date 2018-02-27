@@ -62,8 +62,6 @@ angular.module("Tipster").controller("DashboardCtrl", function($scope, AuthFacto
   });
 
   $scope.setGoal = () => {
-    console.log('set called');
-    console.log('scope.goal', $scope.goal);
     if($scope.goal.amount === undefined || +$scope.goal.amount % 1 !== 0 || +$scope.goal.amount === 0) {
       alert("Please enter a valid goal amount rounded to the nearest dollar");
     } else {
@@ -71,17 +69,14 @@ angular.module("Tipster").controller("DashboardCtrl", function($scope, AuthFacto
         uid: AuthFactory.getCurrentUser().uid,
         amount: $scope.goal.amount
       };
-      console.log('goalObj', goalObj);
       GoalFactory.postGoal(goalObj)
       .then( (response) => {
-        console.log('response', response);
         $scope.displayGoal();
       });
     }
   };
 
   $scope.editGoal = () => {
-    console.log('edit call');
     if($scope.goal.amount === undefined || +$scope.goal.amount % 1 !== 0 || +$scope.goal.amount === 0) {
       alert("Please enter a valid goal amount rounded to the nearest dollar");
     } else {
@@ -91,13 +86,8 @@ angular.module("Tipster").controller("DashboardCtrl", function($scope, AuthFacto
       };
       GoalFactory.putGoal(goalObj, $scope.goal.fbId) //second parameter is goalObj fbId
       .then( () => {
-        console.log('It worked');
         $scope.displayGoal();
       });
     }
-  };
-
-  $scope.test = () => {
-    console.log('goal', $scope.goal.amount);
   };
 });

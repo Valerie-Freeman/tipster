@@ -8,7 +8,6 @@ angular.module("Tipster").factory("GoalFactory", function(FBUrl, $q, $http) {
       $http
         .post(`${FBUrl}/goals.json`, JSON.stringify(goalObj))
         .then(response => {
-          console.log('sent', response);
           resolve(response);
         })
         .catch(error => {
@@ -22,7 +21,6 @@ angular.module("Tipster").factory("GoalFactory", function(FBUrl, $q, $http) {
       $http
         .put(`${FBUrl}/goals/${fbId}.json`, JSON.stringify(goalObj))
         .then(response => {
-          console.log('sent', response);
           resolve();
         })
         .catch(error => {
@@ -37,7 +35,6 @@ angular.module("Tipster").factory("GoalFactory", function(FBUrl, $q, $http) {
         .get(`${FBUrl}/goals.json?orderBy="uid"&equalTo=${uid}`)
         .then(({data}) => {
           let goalArr = Object.entries(data);
-          console.log('GoalFactory goalArr', goalArr);
           resolve(goalArr);
         })
         .catch(error => {

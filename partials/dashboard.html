@@ -1,5 +1,92 @@
 
-<div class="container">
+<div id="dash-page">
+  <div class="top">
+    <div id="next-shift" class="item top-item">
+      <h3>Next Shift</h3>
+      <h5 class="">{{nextShift.date}}, {{nextShift.day}}</h5>
+      <h5 class="">{{nextShift.time}}</h5>
+    </div>
+    <div id="goal" class="item top-item">
+      <h3>Monthly Goal: ${{goal.amount}}</h3>
+      <div ng-if="goal !== undefined"class="progress">
+        <div id="month-goal" class="progress-bar" role="progressbar" aria-valuenow="monthEarnings" aria-valuemin="0" aria-valuemax="goal.amount">${{monthEarnings}}</div>
+      </div>
+      <button ng-if="goal === undefined" type="button" class="btn btn-outline-primary goal-btn" data-toggle="modal" data-target="#setGoalModal">Set Goal</button>
+      <button ng-if="goal !== undefined" type="button" class="btn btn-outline-primary goal-btn" data-toggle="modal" data-target="#editGoalModal">Edit Goal</button>
+    </div>
+  </div>
+  <div class="bottom">
+    <div id="add-tip" class="item bottom-item">
+      <h5 class="">ADD NEW <br> TIP AMOUNT</h5>
+      <a href="#!/shifts" class="btn btn-outline-primary">Shifts ></a>
+    </div>
+    <div id="best-shift" class="item bottom-item">
+      <h3 class="">Best Shift</h3>
+      <h5 class="">{{bestShift.shiftTime}}</h5>
+      <p class="">Average earning of ${{bestShift.shiftAmount}}.00</p>
+    </div>
+  </div>
+</div>
+
+<!-- Set Goal Modal -->
+<div class="modal fade" id="setGoalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content goal-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter a dollar amount  for a monthly goal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="goal.amount">
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="goal-set" class="btn btn-primary" data-dismiss="modal" ng-click="setGoal()">Set Goal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Goal Modal -->
+<div class="modal fade" id="editGoalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content goal-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter a dollar amount  for a monthly goal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="goal.amount">
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="goal-set" class="btn btn-primary" data-dismiss="modal" ng-click="editGoal()">Edit Goal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -50,7 +137,7 @@
   </div>
 </div>
 
-<!-- Set Goal Modal -->
+Set Goal Modal
 <div class="modal fade" id="setGoalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -78,7 +165,7 @@
   </div>
 </div>
 
-<!-- Edit Goal Modal -->
+Edit Goal Modal
 <div class="modal fade" id="editGoalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -104,4 +191,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
