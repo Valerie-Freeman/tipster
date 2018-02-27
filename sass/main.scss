@@ -1,22 +1,355 @@
-#date-input {
-  display: flex;
+
+@import "../lib/node_modules/bootstrap/scss/bootstrap";
+@import "https://fonts.googleapis.com/css?family=Amatic+SC:400,700";
+
+// Variables
+$gray: #c5c1c0;
+$black: #0a1612;
+$blue: #1a2930;
+$yellow: #f7ce3e;
+$pretty-font: "Amatic SC", Helvetica, sans-serif; 
+$main-font: 'Open Sans Condensed', sans-serif;
+
+// Mixins
+@mixin outline-btn ($btn-color) {
+  color: $btn-color;
+  border-color: $btn-color;
+  &:hover {
+    background-color: $btn-color;
+    color: white;
+  }  
 }
 
-.date {
-  margin: 1em;
-  width: 278px;
+@mixin solid-btn ($btn-color) {
+  background-color: $btn-color;
+  color: whitesmoke;
+  &:hover {
+    background-color: $btn-color;
+    color: whitesmoke;
+  }
 }
 
-#shifts-btn {
-  margin: 1em;
+
+// Navbar Styling
+nav {
+  background-color: #1a2930e3 !important;
+  border-bottom: 1px solid #00000094;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.753);
+  .navbar-brand {
+    font-family: $pretty-font !important;
+    color: whitesmoke;
+    font-size: 2.3em;
+    letter-spacing: .1em;
+    text-shadow: 2px 2px 6px #121c22; 
+    margin: -.2em 0; 
+  }
+  #navbarDropdown {
+    color: whitesmoke;
+    font-weight: 100;
+    font-family: $pretty-font;
+    font-size: 1.6em;
+  }
+  #login-1 {
+    color: whitesmoke;
+    border-color: whitesmoke;
+    font-weight: 100;
+    &:hover {
+      background-color: rgba(245, 245, 245, 0.562);
+      color: whitesmoke;
+    }
+  }
+  .dropdown-menu.show {
+    margin-left: -1em;
+  }
+}
+
+// Demo Page Styling
+#demo-page {
+  text-align: center;
+  margin: auto;
+  background-image: url("../images/money.jpg");
+  height: 43em;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  #welcome {
+    color: whitesmoke;
+    font-family: $pretty-font;
+    font-size: 14em;
+    font-weight: 500;
+  }
+  #login-2 {
+    color: whitesmoke;
+    border-color: whitesmoke;
+    font-size: 2em;
+    font-weight: 100;
+    padding: .5em 1.6em;
+    &:hover {
+      background-color: rgba(245, 245, 245, 0.562);
+      color: whitesmoke;
+    }  
+  }
+}
+
+// Login Modal Styling
+#loginModal {
+  .modal-content {
+    border-radius: 7px;
+    .modal-header {
+      font-family: $pretty-font;
+      background-color: $blue;
+      color: white;
+      .modal-title {
+        letter-spacing: .15em;
+        font-size: 2.5em;
+        #sling-logo {
+          width: 54%;
+        }
+      }
+    }
+    .login-btn {
+      background-color: $yellow;
+      border-color: $yellow;
+      color: whitesmoke;
+      &:hover {
+        background-color: #ddba3a;
+      }
+    }
+  }
+}
+
+// Dashboard Styling
+#dash-page {
+  background-image: url('../images/brick.jpg');
+  height: 43em;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  .top {
+    display: flex;
+    margin: 0 4em;
+  }
+  .bottom {
+    display: flex;
+    margin: 0 4em 2em 4em;
+  }
+  .item {
+    font-family: $main-font;
+    border: 1px solid lightgray;
+    padding: 1em;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 2em;
+    box-shadow: 4px 4px 27px black;
+    background-color: whitesmoke;
+  }
+  #next-shift {
+    width: 25%;
+    height: 17em;
+    text-align: center;
+    h3 {
+      border-bottom: 1px solid #0000001f;
+      margin: 0 -.4em;
+      padding: .5em;
+      font-size: 2.5em;
+    }
+    h5:nth-child(2) {
+      font-size: 1.7em;
+      margin-bottom: 0;
+      margin-top: 1.3em;
+    }
+    h5:nth-child(3) {
+      font-size: 1.6em;
+      margin-top: .5em;
+    }
+  }
+  #goal {
+    width: 63%;
+    height: 17em;
+    text-align: center;
+    h3 {
+      font-size: 2.7em;
+      margin: .5em 0
+    }
+    .progress {
+      border: 1px solid #c4c0c0;
+      height: 4em;
+      border-radius: 15em;
+      margin: 3.4em 0;
+    }
+    #month-goal {
+      background-color: $yellow;
+      font-size: 2em;
+      border-right: 1px solid #b6b6b5;
+    }
+    .goal-btn {
+      @include outline-btn($blue);
+      margin-top: -1em;
+      letter-spacing: .3em;
+    }
+  }
+  #add-tip {
+    width: 60.5%;
+    height: 18em;
+    text-align: center;
+    display: flex;
+    > h5 {
+      font-size: 3.5em;
+      letter-spacing: .15em;
+      margin-top: 1em;
+      margin-left: 1em;
+    }
+    > a {
+      height: 1.84em;
+      width: 4em;
+      font-size: 3em;
+      margin-top: 1.7em;
+      margin-left: 1em;
+      padding-left: .4em;
+      @include outline-btn($yellow);
+    }
+  }
+  #best-shift {
+    border-radius: 157px;
+    height: 19em;
+    text-align: center;
+    padding-top: 2.6em;
+    width: 27%;
+    > h3 {
+      font-size: 3em;
+      border-bottom: 1px solid #0000001f;
+      margin: 0 -.28em;
+      padding-bottom: .3em;
+    }
+    > h5 {
+      font-size: 2em;
+      margin-top: .7em;
+    }
+    > p {
+      font-size: 1.7em;
+    }
+  }
+}
+
+.goal-modal {
+  font-family: $main-font;
+  h5 {
+    font-size: 2em !important;
+    letter-spacing: .015em !important;
+  }
+  .modal-body {
+    font-family: Helvetica;
+    padding-bottom: .5em;
+    padding-top: 1.5em;
+  }
+  #goal-set {
+    letter-spacing: .1em;
+    background-color: $blue;
+    border-color: $blue;
+    color: whitesmoke;
+    &:hover {
+      background-color: #1a2930bd;
+      color: whitesmoke;
+    }
+  }
+}
+
+// Shift Page Styling
+#shift-page {
+  #date-input {
+    display: flex;
+    background-image: url('../images/brick.jpg');
+    background-size: 100% 1000%;
+    background-repeat: no-repeat;
+  }
+  .date {
+    margin: 1em;
+    width: 278px;
+    box-shadow: 3px 3px 8px 0px #0000008c;
+  }
+  #shifts-btn {
+    margin: 1em;
+    color: whitesmoke;
+    border-color: whitesmoke;
+    box-shadow: 1px 1px 6px black;
+    border: 1.5px solid;
+    text-shadow: 2px 2px 1px #0d0101ba;
+    font-weight: 100;
+    &:hover {
+      background-color: rgba(245, 245, 245, 0.562);
+      color: whitesmoke;
+    }
+  }
+  .table {
+    box-shadow: 2px -3px 8px #00000087;
+  }
+  thead {
+    font-family: $main-font;
+    letter-spacing: .1em;
+  }
+  tbody {
+    font-family: $main-font;
+    font-size: 1.3em;
+    tr {
+      td:nth-child(4) {
+        width: 13em;
+      }
+    }
+    button {
+      font-size: .9em;
+      letter-spacing: .02em;
+    }
+    #add-tip {
+      @include outline-btn($blue);     
+    }
+    #edit-tip {
+      color: $yellow;
+      border-color: $yellow;
+      &:hover {
+        background-color: $yellow;
+        color: $black;
+      }  
+    }
+  }
 }
 
 .tip-modal {
   width: 26em;
+  font-family: $main-font;
+  .modal-title {
+    font-size: 1.7em;
+    letter-spacing: .01em;
+  }
+  .modal-body {
+    margin: auto;
+    font-family: Helvetica;
+    margin-top: 1em;
+  }
+  .save-tip {
+    background-color: $yellow;
+    border-color: $yellow;
+    letter-spacing: .04em;
+    width: 3.5em;
+    &:hover {
+      background-color: #ddba3a;
+      border-color: #ddba3a;
+    }
+  }
+  .delete-tip {
+    letter-spacing: .04em;
+  }
 }
 
-.tip-modal-body {
-  margin: auto;
+#stats-page {
+  padding-top: 1em;
+  font-family: $main-font;
+  font-size: 1.3em;
+  .dropdown-item {
+    font-size: 1.3em;
+  }
+}
+
+.page {
+  height: 36em;
+
 }
 
 #year-input {

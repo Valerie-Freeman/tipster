@@ -1,6 +1,6 @@
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-sm navbar-light bg-light" ng-controller="NavCtrl">
-    <a class="navbar-brand" href="#!/dashboard">Tipster</a>
+  <nav class="navbar navbar-expand-sm" ng-controller="NavCtrl">
+    <a class="navbar-brand" href="#!/dashboard">TIPSTER</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,7 @@
       <ul class="navbar-nav ml-auto">
           <li class="nav-item" ng-if="!user">
             <div>
-              <button type="button" class="nav-link btn btn-outline-secondary" data-toggle="modal" data-target="#loginModal">Login</button>
+              <button id="login-1" type="button" class="nav-link btn btn-outline-secondary" data-toggle="modal" data-target="#loginModal">Login</button>
             </div>
           </li>
           <li class="nav-item dropdown text-right" ng-if="user">
@@ -31,7 +31,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="loginModalLabel">Login with Sling</h5>
+            <h5 class="modal-title" id="loginModalLabel">Login with <img id="sling-logo" src="http://getsling.com/wp-content/themes/getsling-com/images/icons/logo@2x.png"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -44,16 +44,15 @@
                 </div>
                 <div class="form-group">
                   <label for="password" class="col-form-label">Password:</label>
-                  <input class="form-control" id="password"  ng-model="account.password"></input>
+                  <input type="password" class="form-control" id="password"  ng-model="account.password"></input>
                 </div>
               </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="login()">Login</button>
+            <button type="button" class="btn btn-warning login-btn" data-dismiss="modal" ng-click="login()">Login</button>
           </div>
         </div>
       </div>
     </div>
   </nav>
-
 

@@ -24,7 +24,6 @@ angular.module("Tipster").controller("NavCtrl", function($scope, AuthFactory, $l
   $scope.login = () => {
     AuthFactory.login($scope.account)
     .then( () => {
-      console.log("currentUser", AuthFactory.getCurrentUser());
       checkIfUser();
       $location.url("/dashboard");
     })
@@ -34,9 +33,7 @@ angular.module("Tipster").controller("NavCtrl", function($scope, AuthFactory, $l
   };
   
   $scope.logoutUser = () => {
-    console.log("logout");
     AuthFactory.logout();
-    console.log('currentUser', AuthFactory.getCurrentUser());
     checkIfUser();
   };
 

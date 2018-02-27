@@ -4,7 +4,6 @@ angular.module("Tipster").controller("ShiftsCtrl", function($scope, AuthFactory,
 
   //Grabs dates entered by user and makes a call to Sling to get the user's shifts durring the given time. 
   $scope.listShifts = () => {
-    console.log('called');
     if($scope.startDate === undefined) {
       alert("Please enter a start date");
     } if($scope.endDate === undefined) {
@@ -90,7 +89,6 @@ angular.module("Tipster").controller("ShiftsCtrl", function($scope, AuthFactory,
   $scope.deleteTip = () => {
     TipFactory.deleteTip($scope.shift.fbId)
     .then( () => {
-      console.log('hello');
       $scope.listShifts();
     });
   };

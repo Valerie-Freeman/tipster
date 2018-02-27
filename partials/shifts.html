@@ -1,20 +1,20 @@
-
-<div id="date-input">
-  <div class="input-group date">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="startDate">Start Date</span>
+<div id="shift-page">
+  <div id="date-input">
+    <div class="input-group date">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="startDate">Start Date</span>
+      </div>
+      <input type="date" class="form-control" aria-describedby="startDate" ng-model="startDate">
     </div>
-    <input type="date" class="form-control" aria-describedby="startDate" ng-model="startDate">
-  </div>
-  <div class="input-group date">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="endDate">End Date</span>
+    <div class="input-group date">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="endDate">End Date</span>
+      </div>
+      <input type="date" class="form-control" aria-describedby="endDate" ng-model="endDate">
     </div>
-    <input type="date" class="form-control" aria-describedby="endDate" ng-model="endDate">
+    <button id="shifts-btn" type="button" class="btn btn-outline-secondary" ng-click="listShifts()">List shifts</button>
   </div>
-  <button id="shifts-btn" type="button" class="btn btn-outline-secondary" ng-click="listShifts()">List shifts</button>
-</div>
-<table class="table">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Date</th>
@@ -29,13 +29,14 @@
         <th scope="row">{{shift.date}}</th>
         <td>{{shift.day}}</td>
         <td>{{shift.time}}</td>
-        <td ng-if="!shift.tip"><button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addTipModal" ng-click="populateModal(shift)">Add Tip Amount</button></td>
-        <td ng-if="shift.tip"><button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#addTipModal" ng-click="populateModal(shift)">Edit Tip Amount</button></td>
+        <td ng-if="!shift.tip"><button type="button" id="add-tip"class="btn btn-outline-secondary" data-toggle="modal" data-target="#addTipModal" ng-click="populateModal(shift)">Add Tip Amount</button></td>
+        <td ng-if="shift.tip"><button type="button" id="edit-tip" class="btn btn-outline-warning" data-toggle="modal" data-target="#addTipModal" ng-click="populateModal(shift)">Edit Tip Amount</button></td>
         <td>{{shift.tip}}</td>
       </tr>
     </tbody>
   </table>
   <div ng-if="shifts.length === 0">You have no shifts durring these days</div>
+</div>
   
   <!-- Modal for Add Tip button; Must be in ng-repeat to get shift info -->
   <div class="modal" id="addTipModal" tabindex="-1" role="dialog" aria-labelledby="addTipModalLabel" aria-hidden="true">
@@ -59,9 +60,9 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button ng-if="!shift.tip" type="button" class="btn btn-warning" data-dismiss="modal" ng-click="saveTip()">Save</button>
-          <button ng-if="shift.tip" type="button" class="btn btn-warning" data-dismiss="modal" ng-click="editTip()">Save</button>
-          <button ng-if="shift.tip" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteTip()">Delete</button>
+          <button ng-if="!shift.tip" type="button" class="btn btn-warning save-tip" data-dismiss="modal" ng-click="saveTip()">Save</button>
+          <button ng-if="shift.tip" type="button" class="btn btn-warning save-tip" data-dismiss="modal" ng-click="editTip()">Save</button>
+          <button ng-if="shift.tip" type="button" class="btn btn-danger delete-tip" data-dismiss="modal" ng-click="deleteTip()">Delete</button>
         </div>
       </div>
     </div>
